@@ -619,7 +619,7 @@ locations.delete('Mumbai')
 
     Classes
 
-    rubyclass.jpg 
+    rubyclass.rb
 
     they are class objects,
     when you make one
@@ -643,6 +643,12 @@ locations.delete('Mumbai')
 
     to get a bool abt an obj class
     puts num.instance_of? Fixnum 
+
+    to define procs in classes
+
+    class Dog      
+        def bite; lambda {puts 'a'}; end
+      end      
 
 
     Literal constrcutor
@@ -710,13 +716,341 @@ locations.delete('Mumbai')
 
     Open Classes 
     
+    in Ruby classes are never closed 
+    only add methods everything else must be done in intialize
+    in startEngine.rb add a method and see the magic 
+
+    if you dont want to overwrite a method 
+    
+    method: write_size
+    String.methods.grep /^wr/ # []  
+
+    class String  
+        def write_size  
+          self.size  
+        end  
+      end  
+      size_writer = "Tell me my size!"  
+      puts size_writer.write_size 
+
+    be careful when adding instance vars and methods 
+    i think you only use methods to access instance vars
+    cant use procs like tht
+    only give instance vars like procs in the initalize 
 
 
+    Ruby Inheritance
 
+    inheritance.rb
+
+      we can override a class method in its child class, but the parent class method is kept 
+      theres the root Class BasicObject, but its just for tiny size really you get everyhting from Object 
+
+    when using super()
+        Ruby sends a message to the parent of the object, asking it to invoke a method of the same name as the method invoking super
+        however refer to inheritance if you want to do special things the instance var
+        super(a, b, c) - it sends exactly those arguments.
+        
+
+
+    Redefining Methods 
+        if you define a method in the class 2x, the last prevails 
     
 
+    Abstract class
+    a class left for subclasses to define
+
+    class AbstractKlass  
+        def welcome  
+          puts "#{hello} #{name}"  
+        end  
+      end  
+        
+      # A concrete class  
+      class ConcreteKlass < AbstractKlass  
+        def hello; "Hello"; end  
+        def name; "Ruby students"; end  
+      end      
+        
+
+      Ruby Overloading Methods
+      its a fake over load, so it can accept a different amnt of args but the implementation is manifested in fn definition
+
+      file overload.rb
+
+
+      Ruby Access Control 
+
+      accessControl.rb
+
+      these are for classes
+      public methods, called by everyone
+      protected  methods can be invoked only by objects of the defining class and its subclasses.
+      private methods can only be called with self, no other receiver 
+
+      this is determined dynamically, so on invocation, if in a method and its not called yr good 
+
+      In Ruby, public, private and protected apply only to methods. Instance and class variables are encapsulated and effectively private, 
+      and constants are effectively public. 
+      There is no way to make an instance variable accessible from outside a class (except by defining an accessor method). 
+      And there is no way to define a constant that is inaccessible to outside use.      
+
+      to access vars in a class
+      class Song  
+        def initialize(name, artist)  
+          @name     = name  
+          @artist   = artist  
+        end  
+        For create reader only  
+        attr_reader :name, :artist 
+        For creating reader and writer methods  
+        attr_accessor :name  
+        For creating writer methods  
+        attr_writer :name  
+        
+      end  
+        
+      song = Song.new("Brazil", "Ivete Sangalo")  
+      puts song.name  
+      puts song.artist 
+
+      Exceptions 
+
+      exception.jpg
+
+      if its not a Standard Error ruby tries not to handle them 
+  
+      to raise an exception
+      raise 'An error has occured' 
+
+      Handling an Exception 
+
+      def raise_and_rescue  
+        begin  
+          puts 'I am before the raise.'  
+          raise 'An error has occured.'  
+          puts 'I am after the raise.'  
+        rescue  
+          puts 'I am rescued.'  
+        end  
+        puts 'I am after the begin block.'  
+      end  
+     
+      begin  
+        # -  
+      rescue OneTypeOfException  
+        # -  
+      rescue AnotherTypeOfException  
+        # -  
+      else  
+        # No exceptions  
+      end  
+
+
+      to inspect an error
+      begin  
+        raise 'A test exception.'  
+      rescue StandardError => e  
+        puts e.message  
+        puts e.backtrace.inspect  
+      end  
+
+      some common errors RuntimeError (this is the default exception raised by the raise method),
+       StandardError, NoMethodError, NameError, IOError, TypeError and ArgumentError
+      
+      Exception Object has 2 methods, message and backtrace 
+
+
+      Guranantee process of code even if rescue is not used 
+      ensure block. place after last rescue 
+        
+        
+      to prevent errors using checking in a class  or execute code when a class var changes 
+      class Name  
+        attr_reader :first, :last    
+        def first=(first)  
+          if first == nil or first.size == 0  
+            raise ArgumentError.new('Everyone must have a first name.')  
+          end  
+          first = first.dup  
+          first[0] = first[0].chr.capitalize  
+          @first = first  
+        end  
+      end
+
+      Logging 
+
+      require 'logger'  
+      $LOG = Logger.new('log_file.log', 'monthly')  
+      def divide(numerator, denominator)  
+        $LOG.debug("Numerator: #{numerator}, denominator #{denominator}")  
+        begin  
+          result = numerator / denominator  
+        rescue Exception => e  
+          $LOG.error "Error in division!: #{e}"  
+          result = nil  
+        end  
+        return result  
+      end  
+      divide(10, 2) 
+      
+      to change the log level 
+
+      Time Class 
+
+      t = Time.now  
+      # to get day, month and year with century  
+      # also hour, minute and second  
+      puts t.strftime("%d/%m/%Y %H:%M:%S")  
+        
+      # You can use the upper case A and B to get the full  
+      # name of the weekday and month, respectively  
+      puts t.strftime("%A")  
+      puts t.strftime("%B")  
+        
+      # You can use the lower case a and b to get the abbreviated  
+      # name of the weekday and month, respectively  
+      puts t.strftime("%a")  
+      puts t.strftime("%b")  
+        
+      # 24 hour clock and Time zone name  
+      puts t.strftime "at %H:%M %Z"  
+
+      ruby p042time.rb  
+      10/09/2006 10:06:31  
+      Sunday  
+      September  
+      Sun  
+      Sep  
+      at 10:06 India Standard Time  
+      Exit code: 0  
+      
+      Duck Typing
+
+      you can do this     
+    
+      puts make_it_quack(Duck.new) 
+    
+      def make_it_quack(duck)  
+      duck.quack  
+      end
+      
+      Mutable and Immutable Objects
+
+      to freeze an object 
+      str.freeze 
+
+      to ask if an object is frozen 
+      str.frozen?
+
+      Object Serialization
+      Marshal only serializes pieces of data.
+
+      serial.rb
+
+      Modules/Mixins 
+
+      mixnins.rb 
+      act as a namespace see the namespace vars 
+      shar functionality betwenn classes 
+
+      to add folders to your paths
+      $: << "c:/"         # add a folder to the load path
+      
+      if the module has a class or another module cant use include 
+
+      module Trig  
+        PI = 3.1416  
+        # class methods  
+        def Trig.sin(x)  
+          # ...  
+        end  
+        def Trig.cos(x)  
+          # ...  
+        end  
+      end  
+        
+      # p059mymoral.rb  
+      module Moral  
+        VERY_BAD = 0  
+        BAD = 1  
+        def Moral.sin(badness)  
+          # ...  
+        end  
+      end  
+        
+      # p060usemodule.rb  
+      require_relative 'p058mytrig'  
+      require_relative 'p059mymoral'  
+      Trig.sin(Trig::PI/4)  
+      Moral.sin(Moral::VERY_BAD)       
+      
   
 
+      Self 
+      theres only 1
+
+      class and module
+
+        class S  
+            puts 'Just started class S'  
+            puts self  
+            module M  
+              puts 'Nested module S::M'  
+              puts self  
+            end  
+            puts 'Back in the outer level of S'  
+            puts self  
+          end          
+
+      instance method 
+
+      class S  
+        def m  
+          puts 'Class S method m:'  
+          puts self  
+        end  
+      end  
+      s = S.new  
+      s.m   <S:0x2835908>       
+
+
+      Self in singleton-method and class-method definitions
+
+      Singleton methods - those attached to a particular object can be called by only one object.
+       When a singleton method is executed, self is the object that owns the method, as shown below:
+      
+          # p063xself3.rb  
+          obj = Object.new  
+          def obj.show  
+            print 'I am an object: '  
+            puts "here's self inside a singleton method of mine:"  
+            puts self  
+          end  
+          obj.show  
+          print 'And inspecting obj from outside, ' 
+          puts "to be sure it's the same object:"  
+          puts obj  
+      
+      The output of the above example is:
+      
+          >ruby p063xself3.rb  
+          I am an object: here's self inside a singleton method of mine: 
+          #<Object:0x2835688> 
+          And inspecting obj from outside, to be sure it's the same object:  
+          #<Object:0x2835688>  
+          >Exit code: 0  
+      
+      Class methods are defined as singleton methods for class objects. Refer to the following program:
+      
+          # p063xself4.rb  
+          class S  
+            def S.x  
+              puts "Class method of class S"  
+              puts self  
+            end  
+          end        
+         
 
   
 

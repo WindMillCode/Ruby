@@ -59,3 +59,20 @@ d = nil
 d1 = nil  
 d1.display 
 # then the Dog object is abandoned and eligible for Garbage Collection (GC) 
+
+
+/Abstract Class/
+
+class AbstractKlass  
+    def welcome  
+      puts "#{hello} #{name}"  
+    end  
+  end  
+    
+  # A concrete class  
+  class ConcreteKlass < AbstractKlass  
+    def hello; "Hello"; end  
+    def name; "Ruby students"; end  
+  end      
+    
+ConcreteKlass.new.welcome # Displays "Hello Ruby students"  
