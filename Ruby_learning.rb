@@ -1052,10 +1052,42 @@ locations.delete('Mumbai')
           end        
          
 
-  
+      CONSTANTS 
+      ruby donest enforce this it gives a warning
+      you can access them like module class 
+
+      Socket Programming and Threads
+
+      socketapi.jpg
+      to use require 'socket'
+
+      a sample date and time client
+    # p068dtserver.rb  
+    # Date Time Server - server side using thread  
+    # usage: ruby p068dtserver.rb  
+    require "socket"  
+    dts = TCPServer.new('localhost', 20000)  
+    loop do  
+      Thread.start(dts.accept) do |s|  
+        print(s, " is accepted\n")  
+        s.write(Time.now)  
+        print(s, " is gone\n")  
+        s.close  
+      end  
+    end        
 
 
-  
+    # p069dtclient.rb  
+    require 'socket'  
+    streamSock = TCPSocket.new( "127.0.0.1", 20000 )  
+    #streamSock.send( "Hello\n" )  
+    str = streamSock.recv( 100 )  
+    print str  
+    streamSock.close      
+
+
+  installing gems 
+  https://guides.rubygems.org/rubygems-basics/#installing-gems  
 
 
     
