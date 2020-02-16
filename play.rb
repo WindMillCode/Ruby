@@ -178,6 +178,99 @@
 # raise 'An error has occured' 
 
 
+#########################################
+def return_something
+    2
+end
 
 
+#########################################
+
+
+#########################################
+# Your code here
+
+def full_name first,*middle,last
+  v = first
+  middle.each do |d|
+    v.concat ' ' , d 
+  end 
+  v.concat ' ' , last 
+  puts v
+end 
+full_name 'Pradeep', 'Suresh', 'Igbo', 'Satyanarayana'
+#########################################
+
+#########################################
+# Your code here
+
+# def convert_temp temp,**options
+
+# #   puts options
+#   start = ''
+#   last = '' 
+#   final = temp.to_f
+# #   begin
+# #     if options[:output_scale].class != String then
+# #         options[:output_scale] = 'celsius'
+# #     end
+# #   rescue
+# #     puts 'error'
+# #   end
+
+#   unless options[:input_scale] == options[:output_scale]
+  
+
+#   if options[:input_scale] == 'fahrenheit'    then
+#     final = (final -32.0 )  * (5.0/9.0)
+#     if options[:output_scale] ==  'kelvin'  then
+#       final +=   273.15
+#     end     
+   
+
+#   elsif options[:input_scale] == 'kelvin'   then
+#     final -=   273.15
+#     if options[:output_scale] ==  'fahrenheit'  then
+#       final = (final * (9.0/5.0) ) +32
+#     end     
      
+
+#   elsif options[:input_scale] == 'celcius'   then
+#     backup = final 
+#     final +=   273.15
+#     if options[:output_scale] ==  'fahrenheit'  then
+#       final = (backup * (9.0/5.0) ) +32
+#     end     
+#   end     
+
+#  end
+#    final
+# end 
+# convert_temp 80, input_scale: 'kelvin', output_scale: 'fahrenheit'
+#########################################
+     
+# def call_block  
+#     puts 'Start of method'  
+#     # you can call the block using the yield keyword  
+#     yield  
+#     yield  
+#     puts 'End of method'  
+#     end  
+#     # Code blocks may appear only in the source adjacent to a method call  
+#     x=300
+# call_block do 
+#   puts 'In the block'
+# end   
+    
+#########################################
+
+#ranges
+# puts (1..10).to_a
+# puts (1...10).to_a
+# puts %w{a}.class
+#########################################
+
+# attach a standalone proc
+my_proc = lambda { |i| puts i }
+my_proc.call %w{1,2,3,4}
+#########################################

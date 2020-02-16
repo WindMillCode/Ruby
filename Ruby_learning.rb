@@ -64,7 +64,9 @@ a = 2 and b = 3 and c = 5
 
 
 Strings
-use "'"
+
+
+or use %{}
   to escape
   'escaped\'ssdada'
 
@@ -159,7 +161,7 @@ Making methods
   method.rb
 
   can do this 
-    def mtd(arg1="Dibya", arg2="Shashank", arg3="Shashank")  
+    def mtd arg1="Dibya", arg2="Shashank", arg3="Shashank"
       "#{arg1}, #{arg2}, #{arg3}."  
     end 
   
@@ -317,14 +319,14 @@ puts 'End of method'
 end  
 # Code blocks may appear only in the source adjacent to a method call  
 call_block {puts 'In the block'}  
-
+see the code in the call block amnt of times yield is there
 
 Examples 
 
     # You can provide parameters to the call to yield:  
     # these will be passed to the block  
     def call_block  
-        yield('hello', 99)  
+        yield 'hello', 99  
       end  
     call_block {|str, num| puts str + ' ' + num.to_s}  
 
@@ -465,7 +467,7 @@ locations.delete('Mumbai')
 
   to convert from range to list 
   (1..10).to_a -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
-  (1...10).to_a # -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
+  (1...10).to_a # -> [1, 2, 3, 4, 5, 6, 7, 8, 9] 
 
     some range methods 
     digits = -1..9  
@@ -654,11 +656,12 @@ locations.delete('Mumbai')
     Literal constrcutor
     so all the types you learned about, those are literal constrcutors
 
-    String - 'hello' or "hello"
+    String - %{hello} 
     Symbol - :symbol or :"hello world"
-    Array - %{x, y, z}
+    Array - %w{x, y, z}
     Hash - {:India => "IN"}
-    Range - 3..7 or 3...7    
+    Range - 3..7 or 3...7   
+    Command - `dir` or system   %{dir} 
 
     Method Missing 
 
@@ -689,6 +692,7 @@ locations.delete('Mumbai')
     [1,2,3,4].each do |i|
       puts i
     end
+    
     
     to make a method act like an object 
     class Test
@@ -853,6 +857,8 @@ locations.delete('Mumbai')
       rescue StandardError => e  
         puts e.message  
         puts e.backtrace.inspect  
+      end  e.message  
+        puts e.backtrace.inspect  
       end  
 
       some common errors RuntimeError (this is the default exception raised by the raise method),
@@ -983,7 +989,7 @@ locations.delete('Mumbai')
       require_relative 'p058mytrig'  
       require_relative 'p059mymoral'  
       Trig.sin(Trig::PI/4)  
-      Moral.sin(Moral::VERY_BAD)       
+      Moral.sin(Moral::VERY_BAD)        
       
   
 
@@ -1090,6 +1096,13 @@ locations.delete('Mumbai')
   https://guides.rubygems.org/rubygems-basics/#installing-gems  
 
 
+
+  capybara
+  plan to use capybara
+  capybara-screenshot
+  capybara-selenium
+  percy-capybara
+  capybara-angular
     
 
 
