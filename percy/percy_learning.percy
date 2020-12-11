@@ -1,0 +1,91 @@
+https://docs.percy.io/v1/docs/getting-started
+
+
+create a project > integration settings
+Step 1: Set the PERCY_TOKEN environment variable in your CI environment.
+Step 2: Integrate Percy via one of our SDKs to take snapshots.
+Step 3: Run your tests in CI and integrate with GitHub or GitLab!
+
+
+Capybara, no tests
+
+https://docs.percy.io/v1/docs/capybara-no-tests
+
+
+    percy-capybara gem.
+    poltergeist gem, which requires PhantomJs to be installed.
+    A directory of compiled asset files.
+    A local or remote server running the app.
+
+    anticipating you might wanna do this with a path
+  
+  dont nned none of that
+
+https://docs.percy.io/docs/capybara
+    make a percy account setup a percy project 
+    take their PERCY_TOKEN and place in your OS ENV vars 
+    gem 'percy-capybara', '~> 4.0.0'  bundle install
+    npm install --save-dev @percy/agent (need the package.json)
+    require percy in your capybara tests 
+    npx percy  exec rspec .\nav-e2e.spec.rb
+
+    Percy.snapshot page  
+    Percy.snapshot page ,options
+
+    name: string identifying the trial 
+    widths: array of intergers representing browser widths 
+    min_height: An integer specifying the minimum height of the resulting snapshot 
+    (the snapshot might turn to be higher than this value, 
+    depending on the contents of the page). Defaults to 1024px.
+    percy_css: A string containing Percy specific CSS that will be applied to this snapshot.
+      to hide elements 
+
+      await percySnapshot('Home page', { 
+        percyCSS: `iframe { display: none; }` 
+      });
+
+      in percy.yml
+      version: 1
+      snapshot:
+        percy-css: | 
+          iframe { 
+            display: none; 
+          }
+
+      @media only percy {
+        .hide-in-percy {
+          visibility: hidden;
+        }
+      }    
+
+
+  request_headers: An object containing HTTP headers to be sent for each request
+  made during asset discovery for this snapshot.
+
+  examples:
+  Percy.snapshot page, { :name => 'Responsive snapshot', :widths=> [768, 992, 1200] }
+  Percy.snapshot page, { :min_height=> 2000 }
+
+
+  Waiting for elements
+
+  expect(page).to have_css('#new-project')
+  expect(page).to have_content('New Project')
+  
+  Troubleshooting
+
+  Webpack missing styles
+  
+  webpack generates css as a blob asset which cant be seen by asset discovery 
+  in webpack config file do 
+  test:
+  ...
+  # Extract and emit a css file
+  extract_css: true  
+
+  https://docs.percy.io/docs/circleci
+  Parallelized Tests configuruing CircleCI orb 
+  only if running test in parallel 
+
+  https://docs.percy.io/docs/baseline-picking-logic
+  when you have several branches 
