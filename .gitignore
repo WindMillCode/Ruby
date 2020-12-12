@@ -1,0 +1,7 @@
+# Developer Team additons
+report*.json
+*.mp4
+20*
+Refv*
+/README.md
+*node_modules*
