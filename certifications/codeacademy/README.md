@@ -374,14 +374,14 @@ a = %w{1 2 3 4}
 * an array numbers
   * the do end same from the loop, 
 ```rb
-%w{ 1 2 3 4 5}.map! do |x| x = Integer(x) end
+%w{ 1 2 3 4 5}.map! do |x| x = x.to_i end
 ```
 ### Each method
 * like the map method, loops through the array giving the contents of the array one by one
 * map is meant to modify the items at that point loop is not
 
 ```rb
-odds = %w{ 1 3 5 7 9}.map! do |x| x = Integer(x) end
+odds = %w{ 1 3 5 7 9}.map! do |x| x.to_i end
 
 # Add your code below!
 odds.each do |item|
@@ -394,5 +394,73 @@ end
 
 ```rb 
 10.times do |x| print %{Chunky bacon! #{x}} end
+```
+
+## Data structures
+
+### Creating Arrays
+
+* you can put anything as an index as an array
+```rb
+num_array = %w{ 1 2 3 4 5}.map! do |x| x.to_i  end
+```
+
+### access by index
+
+* access start at 0
+```rb 
+num_array.at 0 
+# output 1
+```
+
+### Nested arrays
+* need square brackets
+```rb
+[ %w{ 1 2 3 4 5}, %w{ 1 2 3 4 5}]
+```
+
+
+###   Introduction to Hashes
+* key value pairs it lookes like below
+```rb
+my_hash = {
+  :key1 => %{value1},
+  :key2 => %{value2},
+  :key3 => %{value3}
+}
+
+my_hash = Hash.new
+```
+
+* to access hash values
+```rb
+puts my_hash["name"]
+puts my_hash["age"]
+puts my_hash["hungry?"]
+```
+
+* to add values
+
+```rb
+my_hash[%{name}] = %{Andy}
+```
+
+### Iterating through hashes
+* one parameter represnts the key the other reps the value
+```rb
+family = { "Homer" => "dad",
+  "Marge" => "mom",
+  "Lisa" => "sister",
+  "Maggie" => "sister",
+  "Abe" => "grandpa",
+  "Santa's Little Helper" => "dog"
+}
+
+family.each { |x, y| puts "#{x}: #{y}" }
+```
+
+* if you put one you get an array each with the key and value
+```rb
+family.each { |x| puts x }
 ```
 
