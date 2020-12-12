@@ -128,3 +128,107 @@ puts %{Your name is #{first_name}!}
 ```rb 
 first_name.capitalize!
 ```
+
+### [LAB PUTTING THE FORM IN FORMATTER](./vids/Putting_The_Form_In_Formatter/README.md)
+
+## CONTROL FLOW IN RUBY
+
+### How It Works
+
+```rb
+print "Integer please: "
+user_num = Integer(gets.chomp)
+
+if user_num < 0
+  puts "You picked a negative integer!"
+elsif user_num > 0
+  puts "You picked a positive integer!"
+else
+  puts "You picked zero!"
+end
+```
+
+
+### If
+* indent by 2 spaces
+* if the condition is true execute the code indented by 2 spaces till the end block
+
+```rb
+if true
+  puts "true"
+end
+```
+
+### Else
+* indent by 2 spaces
+* when the if condition is false, executed the code in the else block indented by 2 spaces till the end block 
+
+```rb
+if 1 > 2
+  print "I won't get printed because one is less than two."
+else
+  print "That means I'll get printed!"
+end
+```
+
+
+### Elsif
+* if you have more than one condtion use elsif
+```rb
+if x < y  # Assumes x and y are defined
+  puts "x is less than y!"
+elsif x > y
+  puts "x is greater than y!"
+else
+  puts "x equals y!"
+end
+```
+
+### Unless 
+* * indent by 2 spaces
+* the opposite of if
+* when the condition is false, executed the code in the unless block indented by 2 spaces till the end block 
+```rb
+hungry = false
+unless hungry
+  puts "I'm writing Ruby programs!"
+else
+  puts "Time to eat!"
+end
+```
+
+### Equal or Not?
+* the answer will be true or false
+* to ask  if equal 
+```rb
+2 == 3 
+```
+
+* to ask if not equal 
+```rb
+2 != 3 
+```
+
+### Less Than or Greater Than
+* Less than: <
+* Less than or equal to: <=
+* Greater than: >
+* Greater than or equal to: >=
+
+* same logic as above
+
+### And
+
+__and (&&)__ - boolean operator - when both expression on either side of && are true. 
+
+
+### Or
+
+__or (||)__ = boolean operator- when either expression on either side of && are true 
+
+### Not
+
+__not (!)__ - vice-versa of the final result
+
+### Combining Boolean Operators
+* use parentheses to help combine expressions
