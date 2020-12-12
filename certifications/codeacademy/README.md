@@ -2,7 +2,7 @@
 
 * Ruby was designed by Yukihiro Matsumoto (often just called “Matz”) in 1995. 
 
-## INTRODUCTION TO RUBY
+## Introduction to ruby
 
 ### Data Types: Numbers, Strings, Booleans
 
@@ -101,7 +101,7 @@ my_age = 32
 ### [LAB INTRODUCTION TO RUBY](./vids/Introduction_to_Ruby/README.md)
 
 
-## PUTTING THE FORM IN FORMATTER
+## Putting the form in formatter
 
 ### Prompting the User
 
@@ -131,7 +131,7 @@ first_name.capitalize!
 
 ### [LAB PUTTING THE FORM IN FORMATTER](./vids/Putting_The_Form_In_Formatter/README.md)
 
-## CONTROL FLOW IN RUBY
+## Control flow in ruby
 
 ### How It Works
 
@@ -232,3 +232,64 @@ __not (!)__ - vice-versa of the final result
 
 ### Combining Boolean Operators
 * use parentheses to help combine expressions
+
+
+### [Lab Control Flow In Ruby](./vids/Control_Flow_In_Ruby/README.md)
+
+
+## Thith meanth war!
+
+
+* replace a substring with another stirng
+```rb
+print "Thtring, pleathe!: "
+user_input = gets.chomp
+user_input.downcase!
+
+if user_input.include? "s"
+  user_input.gsub!(/s/, "th")
+else
+  puts "Nothing to do here!"
+end
+  
+puts "Your string is: #{user_input}"
+```
+
+### Getting User Input
+
+
+```rb
+puts %{User input please}
+user_input = gets.chomp
+```
+
+### Downcase!
+* use the (!) to modify in place
+```rb
+user_input.downcase!
+```
+
+### Setting Up the 'If' Branch, Part 1
+
+* to check for s in the string
+```rb
+
+if user_input.include? %{s}
+
+end
+```
+
+* to replace s with another string
+
+```rb
+user_input.gsub! /s/, %{th}
+```
+
+* else statement
+```rb
+if user_input.include? %{s} 
+  user_input.gsub! /s/, %{th}
+else
+  puts %{not found}
+end
+```
