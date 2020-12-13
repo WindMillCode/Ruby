@@ -34,6 +34,13 @@ puts sum =  13 + 379
 puts product = 923 * 15
 puts quotient = 13209 / 17
 ```
+
+* for large numbers dont use , use _ 
+
+```rb
+100_000 
+10_000_000
+```
 ### 'puts' and 'print'
 
 puts automatically places '\n' (newline)
@@ -435,6 +442,14 @@ my_hash = {
 my_hash = Hash.new
 ```
 
+
+* the default value for a new key-value pair is nil
+* tochange this
+
+```rb
+my_hash = Hash.new %{new default value}
+```
+
 * to access hash values
 ```rb
 puts my_hash["name"]
@@ -546,3 +561,43 @@ books.sort! { |firstBook, secondBook| secondBook <=>  firstBook   }
 ```
 
 
+##  Symbols
+* they are unique in the program, its not the data that its important its the name of the symbol
+
+* the symbol has the same object_id
+```rb
+puts "string".object_id
+puts "string".object_id
+
+puts :symbol.object_id
+puts :symbol.object_id
+
+```
+
+* to convert to a symbol
+
+```rb
+%{string}.to_sym
+%{string}.intern
+
+# Output = :string
+```
+
+* symbol hashing is faster than string hashing
+```rb
+require 'benchmark'
+
+string_AZ = Hash[("a".."z").to_a.zip((1..26).to_a)]
+symbol_AZ = Hash[(:a..:z).to_a.zip((1..26).to_a)]
+
+string_time = Benchmark.realtime do
+  100_000.times { string_AZ["r"] }
+end
+
+symbol_time = Benchmark.realtime do
+  100_000.times { symbol_AZ[:r] }
+end
+
+puts "String time: #{string_time} seconds."
+puts "Symbol time: #{symbol_time} seconds."
+```
