@@ -50,7 +50,7 @@ my_hash =  {
 puts my_hash
 ```
 
-* previous syntax
+* previous syntax (Ruby 1.9)
 ```rb
 my_hash =  {
   one:  1,
