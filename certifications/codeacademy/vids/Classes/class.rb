@@ -9,11 +9,6 @@ end
 
 
 
-
-
-
-
-
 # initialize
 =begin
 class MyClass
