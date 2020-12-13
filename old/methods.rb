@@ -1,4 +1,4 @@
-    # p008mymethods.rb  
+Introduction to ruby    # p008mymethods.rb  
     # A method returns the value of the last line  
     # Methods that act as queries are often named with a trailing ?  
     # Methods that are "dangerous," or modify the receiver, might be named  

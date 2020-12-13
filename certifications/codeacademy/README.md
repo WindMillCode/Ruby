@@ -2,7 +2,7 @@
 
 * Ruby was designed by Yukihiro Matsumoto (often just called “Matz”) in 1995. 
 
-## Introduction to ruby
+## Introduction To Ruby
 
 ### Data Types: Numbers, Strings, Booleans
 
@@ -404,7 +404,10 @@ end
 ```rb
 num_array = %w{ 1 2 3 4 5}.map! do |x| x.to_i  end
 ```
-
+* to sort an array
+```rb
+my_array.sort!
+```
 ### access by index
 
 * access start at 0
@@ -463,4 +466,83 @@ family.each { |x, y| puts "#{x}: #{y}" }
 ```rb
 family.each { |x| puts x }
 ```
+
+### method Sort-By
+
+* to sort by key or values from a hash
+  * you can also place methods at the ends of functions, they behave as methods too
+
+```rb
+colors = { 
+  "blue" => 3,
+  "green" => 1,
+  "red" => 2
+}
+colors = colors.sort_by do |color, count|
+  count
+end
+.reverse!
+```
+
+
+## Methods, Blocks, & Sorting
+
+### Method Syntax
+
+* to make a method
+```rb
+def welcome param1, param2
+  # your code here
+  # return if you want a value back
+end
+```
+
+* to call a method
+```rb
+  welcome   arg1,arg2
+```
+
+* to express ...
+  * the *in front of friends, means for any amount of args passed, they would end up in friends
+```rb
+def what_up greeting, *friends
+  friends.each { |friend| puts "#{greeting}, #{friend}!" }
+end
+
+
+what_up "What up", "Ian", "Zoe", "Zenas", "Eleanor" 
+```
+
+
+### Blocks
+
+* to make a block
+```rb
+do
+  # your code here
+end
+
+{
+	#your code here
+}
+```
+
+* the difference between blocks and methods, once blocks are called they dont exist, methods you can call again
+
+
+### The Combined Comparison Operator
+
+* tell you how ruby would order say title of a books
+
+```rb
+books = ["Charlie and the Chocolate Factory", "War and Peace", "Utopia", "A Brief History of Time", "A Wrinkle in Time"]
+
+# To sort our books in ascending order, in-place
+books.sort! { |firstBook, secondBook| firstBook <=> secondBook }
+
+# Sort your books in descending order, in-place below
+
+books.sort! { |firstBook, secondBook| secondBook <=>  firstBook   }
+```
+
 
