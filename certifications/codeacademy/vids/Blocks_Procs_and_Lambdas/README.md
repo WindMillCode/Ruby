@@ -1,4 +1,4 @@
-## Blocks, Procs, And Lambdas
+## Blocks, Procs, And Lambdas in Ruby
 
 * blocks are not functions they are just pieces of code
 

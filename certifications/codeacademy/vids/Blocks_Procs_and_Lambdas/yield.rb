@@ -1,8 +1,14 @@
 =begin
+[1,2,3,4].each do |x|
+
+end
+=end
+
+
+=begin
 def yield_name name
   puts "In the method! Let's yield."
   yield "Kim"
-  puts ab
   puts "In between the yields!"
   yield name
   puts "Block complete! Back in the method."
@@ -23,17 +29,17 @@ def yield_name name
 end
 
 
+
 a =  Proc.new do |n| puts "My name is #{n}." end
 a.call "Joe" 
-
-yield_name "Eric" , &a
+# yield_name "Eric" , &a
 =end
 
 
-# p "9".methods
+# p "a".methods
 
 =begin
-strings = %w{ a  b c}
+strings = %w{ a  b  c}
 uppercase = strings.collect  &:upcase
 p uppercase
 =end
@@ -47,7 +53,7 @@ def lambda_demo  a,b,c
   puts "finished"
 end
 
-my_lambda =    lambda { |x| puts "I'm the lambda!" }
+my_lambda =    lambda { |x| puts "I'm the lambda! #{x}" }
 other_lambda = lambda { puts "I'm lambda 2!" }
 my_Proc = Proc.new { puts "I'm lambda 2!" }
 
@@ -66,14 +72,15 @@ puts batman_ironman_proc
 # Output "Batman will win!" 
 =end
 
-
+# =begin
 def batman_ironman_lambda
   victor = lambda { return "Batman will win!" }
-  victor.call
+  p victor.call
   "Iron Man will win!"
 end
 
 puts batman_ironman_lambda
 # Output "Iron Man will win!"
+# =end
 
 
